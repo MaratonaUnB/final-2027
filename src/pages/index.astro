@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Countdown from '../components/Countdown.astro';
+import PixelBlast from '../components/PixelBlast.vue';
+import { site } from '../config/site';
+---
+
+<BaseLayout>
+  <main class="relative isolate flex min-h-dvh flex-col overflow-hidden">
+    <div class="pixelblast-layer pointer-events-auto absolute inset-0 -z-10">
+      <PixelBlast
+        client:only="vue"
+        variant="square"
+        pixelSize={4}
+        color="#94A3B8"
+        patternScale={3}
+        patternDensity={1.5}
+        pixelSizeJitter={0.5}
+        enableRipples
+        rippleSpeed={0.4}
+        rippleThickness={0.12}
+        rippleIntensityScale={1.5}
+        speed={0.6}
+        edgeFade={0}
+        transparent
+      />
+    </div>
+
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-brand-bg/60"></div>
+
+    <header class="pointer-events-none relative z-10 px-6 pt-8 sm:px-10">
+      <p class="text-xs font-medium uppercase tracking-[0.3em] text-brand-muted">
+        Maratona SBC de Programação
+      </p>
+    </header>
+
+    <section
+      class="pointer-events-none relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center px-6 py-16 sm:px-10"
+    >
+      <h1
+        class="max-w-3xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+      >
+        Final Brasileira <span class="text-brand-accent-soft">2027</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-pretty text-base text-brand-muted sm:text-lg">
+        {site.city} · {site.venue}
+      </p>
+
+      <p
+        class="mt-2 max-w-xl font-mono text-sm uppercase tracking-[0.15em] text-brand-fg/80 sm:text-base"
+      >
+        11 a 14 de setembro de 2027
+      </p>
+
+      <div class="mt-12 max-w-2xl">
+        <Countdown target={site.startsAt} label="Contagem regressiva para a Final Brasileira 2027" />
+      </div>
+
+      <p class="mt-10 text-sm text-brand-muted">
+        Mais informações em breve.
+      </p>
+    </section>
+
+    <footer
+      class="pointer-events-none relative z-10 px-6 pb-8 text-xs text-brand-muted sm:px-10"
+    >
+      Universidade de Brasília · Sociedade Brasileira de Computação
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  /* astro-island é inline por padrão e zera a altura herdada pelo canvas. */
+  .pixelblast-layer > astro-island {
+    display: block;
+    height: 100%;
+  }
+</style>
