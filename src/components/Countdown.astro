@@ -6,11 +6,12 @@ interface Props {
 
 const { target, label } = Astro.props;
 
+// Uma cor do mosaico por unidade, na ordem dos módulos do logo.
 const units = [
-  { key: 'days', label: 'dias' },
-  { key: 'hours', label: 'horas' },
-  { key: 'minutes', label: 'min' },
-  { key: 'seconds', label: 'seg' },
+  { key: 'days', label: 'dias', accent: 'bg-brand-nuvem' },
+  { key: 'hours', label: 'horas', accent: 'bg-brand-lampada' },
+  { key: 'minutes', label: 'min', accent: 'bg-brand-balao' },
+  { key: 'seconds', label: 'seg', accent: 'bg-brand-eixo-soft' },
 ];
 ---
 
@@ -25,15 +26,18 @@ const units = [
   <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
     {
       units.map((unit) => (
-        <div class="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-5 backdrop-blur-sm sm:px-6 sm:py-6">
-          <div
-            class="font-mono text-4xl font-semibold tabular-nums tracking-tight text-brand-fg sm:text-5xl lg:text-6xl"
-            data-unit={unit.key}
-          >
-            --
-          </div>
-          <div class="mt-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-brand-muted">
-            {unit.label}
+        <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm">
+          <div class={`h-1.5 ${unit.accent}`} />
+          <div class="px-4 py-5 sm:px-6 sm:py-6">
+            <div
+              class="font-mono text-4xl font-semibold tabular-nums tracking-tight text-brand-fg sm:text-5xl lg:text-6xl"
+              data-unit={unit.key}
+            >
+              --
+            </div>
+            <div class="mt-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-brand-muted">
+              {unit.label}
+            </div>
           </div>
         </div>
       ))

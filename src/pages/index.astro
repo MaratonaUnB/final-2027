@@ -12,7 +12,7 @@ import { site } from '../config/site';
         client:only="vue"
         variant="square"
         pixelSize={4}
-        color="#94A3B8"
+        color="#5B8FD9"
         patternScale={3}
         patternDensity={1.5}
         pixelSizeJitter={0.5}
@@ -26,11 +26,18 @@ import { site } from '../config/site';
       />
     </div>
 
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-brand-bg/60"></div>
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-brand-bg/45"></div>
 
-    <header class="pointer-events-none relative z-10 px-6 pt-8 sm:px-10">
+    <header class="pointer-events-none relative z-10 flex items-center gap-4 px-6 pt-8 sm:px-10">
+      <img
+        src={`${import.meta.env.BASE_URL}logo.svg`}
+        alt="Logo da Maratona SBC de Programação: nuvem, lâmpada, balão e o eixo de Brasília"
+        width="44"
+        height="44"
+        class="size-11 shrink-0"
+      />
       <p class="text-xs font-medium uppercase tracking-[0.3em] text-brand-muted">
-        Maratona SBC de Programação
+        {site.edition} Maratona SBC de Programação
       </p>
     </header>
 
@@ -40,7 +47,7 @@ import { site } from '../config/site';
       <h1
         class="max-w-3xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
       >
-        Final Brasileira <span class="text-brand-accent-soft">2027</span>
+        Final Brasileira <span class="text-brand-lampada">2027</span>
       </h1>
 
       <p class="mt-6 max-w-xl text-pretty text-base text-brand-muted sm:text-lg">
@@ -50,7 +57,7 @@ import { site } from '../config/site';
       <p
         class="mt-2 max-w-xl font-mono text-sm uppercase tracking-[0.15em] text-brand-fg/80 sm:text-base"
       >
-        11 a 14 de setembro de 2027
+        {site.dateLabel}
       </p>
 
       <div class="mt-12 max-w-2xl">
